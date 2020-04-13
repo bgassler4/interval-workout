@@ -1,0 +1,7 @@
+{
+    "exercises" : [
+        {"name" : "squat jumps", "type" : "bodyweight" },
+        {"name" : "push ups", "type" : "bodyweight" },
+        {"name" : "pull ups", "type" : "bodyweight" }
+    ]
+}
