@@ -4,21 +4,16 @@ import { TextField, Button, Checkbox } from "@material-ui/core";
 import * as Yup from "yup";
 import Equipment from "./Equipment";
 import TextInput from "../Shared/TextInput";
+import TimeInput from "../Shared/TimeInput";
 
 function CustomizeWorkoutForm() {
   let validationSchema = Yup.object().shape({
     rounds: Yup.number()
       .min(1, "Workout must be at least 1 round!")
-      .max(50, "Take it easy tough guy, 100 rounds max")
+      .max(100, "Take it easy tough guy, 100 rounds max")
       .required("Please Enter Number of Rounds"),
-    roundLength: Yup.number()
-      .min(1, "Minimum 1 minute")
-      .max(20, "Rounds cannot be over 20 minutes")
-      .required("Please Enter a length for each round"),
-    restLength: Yup.number()
-      .min(5, "Rest must be at least 5 seconds")
-      .max(300, "Rest Cannot be over 5 minutes")
-      .required("Please Enter a length for each rest"),
+    roundLength: Yup.string().required("Please Enter a Time"),
+    restLength: Yup.string().required("Please Enter a Time"),
   });
   return (
     <div>
@@ -26,8 +21,8 @@ function CustomizeWorkoutForm() {
         validateOnChange={true}
         initialValues={{
           rounds: 0,
-          roundLength: 0,
-          restLength: 0,
+          roundLength: "03:00",
+          restLength: "00:30",
           equipment: [],
         }}
         validationSchema={validationSchema}
@@ -38,27 +33,27 @@ function CustomizeWorkoutForm() {
           setSubmitting(false);
         }}
       >
-        {({ values, errors, isSubmitting }) => (
+        {({ values, errors, isSubmitting, setFieldValue }) => (
           <Form>
             <div>
               <TextInput name="rounds" label="Number of Rounds" maxLength="3" />
               <br />
               <br />
-              <TextInput
+              <TimeInput
                 name="roundLength"
                 label="Length of Round"
-                maxLength="3"
+                setFieldValue={setFieldValue}
               />
               <br />
               <br />
-              <TextInput
+              <TimeInput
                 name="restLength"
                 label="Length of Rest"
-                maxLength="3"
+                setFieldValue={setFieldValue}
               />
             </div>
 
-            <Equipment />
+            <Equipment setFieldValue={setFieldValue} />
             <div>
               <Button disabled={isSubmitting} type="submit">
                 GET JACKED
