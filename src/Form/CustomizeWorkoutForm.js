@@ -1,10 +1,11 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
-import { TextField, Button, Checkbox } from "@material-ui/core";
+import { Formik, Form } from "formik";
+import { Button } from "@material-ui/core";
 import * as Yup from "yup";
-import Equipment from "./Equipment";
 import TextInput from "../Shared/TextInput";
 import TimeInput from "../Shared/TimeInput";
+import { Equipment } from "../Constants/Constants";
+import CheckboxGroup from "../Shared/CheckboxGroup";
 
 function CustomizeWorkoutForm() {
   let validationSchema = Yup.object().shape({
@@ -53,7 +54,12 @@ function CustomizeWorkoutForm() {
               />
             </div>
 
-            <Equipment setFieldValue={setFieldValue} />
+            <CheckboxGroup
+              setFieldValue={setFieldValue}
+              options={Equipment}
+              name="equipment"
+              label="Equipment"
+            />
             <div>
               <Button disabled={isSubmitting} type="submit">
                 GET JACKED

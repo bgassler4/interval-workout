@@ -6,7 +6,6 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Field } from "formik";
-import { Equipment } from "../Constants/Constants";
 import { useField } from "formik";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EquipmentChecks(props) {
+export default function CheckboxGroup(props) {
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -28,22 +27,22 @@ export default function EquipmentChecks(props) {
     if (index === -1) values.push(event.target.value);
     else values.splice(index, 1);
 
-    props.setFieldValue("equipment", values);
+    props.setFieldValue(props.name, values);
   };
 
-  const [field, meta] = useField("equipment");
+  const [field, meta] = useField(props.name);
 
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Equipment</FormLabel>
+        <FormLabel component="legend">{props.label}</FormLabel>
         <FormGroup>
-          {Equipment.map((option) => (
+          {props.options.map((option) => (
             <FormControlLabel
               key={option.id}
               control={
                 <Field
-                  name="equipment"
+                  name={props.name}
                   type="checkbox"
                   value={option.name}
                   onChange={handleChange}
