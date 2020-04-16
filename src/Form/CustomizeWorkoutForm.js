@@ -6,8 +6,13 @@ import TextInput from "../Shared/TextInput";
 import TimeInput from "../Shared/TimeInput";
 import { Equipment } from "../Constants/Constants";
 import CheckboxGroup from "../Shared/CheckboxGroup";
+import { useDispatch } from "react-redux";
+import { updateWorkoutSpecs } from "../actions";
+import "../Styles/WorkoutForm.css";
 
 function CustomizeWorkoutForm() {
+  const dispatch = useDispatch();
+
   let validationSchema = Yup.object().shape({
     rounds: Yup.number()
       .min(1, "Workout must be at least 1 round!")
@@ -16,12 +21,17 @@ function CustomizeWorkoutForm() {
     roundLength: Yup.string().required("Please Enter a Time"),
     restLength: Yup.string().required("Please Enter a Time"),
   });
+
+  function createWorkout(data) {
+    dispatch(updateWorkoutSpecs(data));
+  }
+
   return (
-    <div>
+    <div className="WorkoutForm">
       <Formik
         validateOnChange={true}
         initialValues={{
-          rounds: 0,
+          rounds: 12,
           roundLength: "03:00",
           restLength: "00:30",
           equipment: [],
@@ -29,7 +39,7 @@ function CustomizeWorkoutForm() {
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
-          // make async call
+          createWorkout(data);
           console.log("submit: ", data);
           setSubmitting(false);
         }}
@@ -37,7 +47,7 @@ function CustomizeWorkoutForm() {
         {({ values, errors, isSubmitting, setFieldValue }) => (
           <Form>
             <div>
-              <TextInput name="rounds" label="Number of Rounds" maxLength="3" />
+              <TextInput name="rounds" label="Number of Rounds" />
               <br />
               <br />
               <TimeInput
@@ -61,7 +71,13 @@ function CustomizeWorkoutForm() {
               label="Equipment"
             />
             <div>
-              <Button disabled={isSubmitting} type="submit">
+              <Button
+                disabled={isSubmitting}
+                type="submit"
+                value="Submit"
+                variant="contained"
+                color="primary"
+              >
                 GET JACKED
               </Button>
             </div>

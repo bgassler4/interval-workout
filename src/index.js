@@ -5,16 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import intervalWorkoutApp from "./reducers";
+import { Provider } from "react-redux";
 
 const store = createStore(intervalWorkoutApp, window.STATE_FROM_SERVER);
 
-// Log the initial state
-console.log(store.getState());
-
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 

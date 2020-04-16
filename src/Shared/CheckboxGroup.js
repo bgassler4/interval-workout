@@ -30,7 +30,7 @@ export default function CheckboxGroup(props) {
     props.setFieldValue(props.name, values);
   };
 
-  const [field, meta] = useField(props.name);
+  const [field] = useField(props.name);
 
   return (
     <div className={classes.root}>

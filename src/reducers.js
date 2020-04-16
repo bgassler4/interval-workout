@@ -1,5 +1,5 @@
 import {
-  CREATE_WORKOUT,
+  UPDATE_WORKOUT_SPECS,
   SET_VISIBILITY_FILTER,
   VisibilityFilters,
 } from "./actions";
@@ -9,9 +9,9 @@ const { SHOW_ALL } = VisibilityFilters;
 
 function workoutSpecs(state = {}, action) {
   switch (action.type) {
-    case CREATE_WORKOUT:
+    case UPDATE_WORKOUT_SPECS:
       return {
-        workoutSpecs: state,
+        workoutSpecs: action.workoutSpecs,
       };
     default:
       return state;

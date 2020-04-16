@@ -1,7 +1,7 @@
 /*
  * action types
  */
-export const CREATE_WORKOUT = "CREATE_WORKOUT";
+export const UPDATE_WORKOUT_SPECS = "UPDATE_WORKOUT_SPECS";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
 /*
@@ -10,14 +10,15 @@ export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
 export const VisibilityFilters = {
   SHOW_ALL: "SHOW_ALL",
+  SHOW_COMPLETED: "SHOW_COMPLETED",
 };
 
 /*
  * action creators
  */
 
-export function createWorkout(workoutSpecs) {
-  return { type: CREATE_WORKOUT, workoutSpecs };
+export function updateWorkoutSpecs(workoutSpecs) {
+  return { type: UPDATE_WORKOUT_SPECS, workoutSpecs };
 }
 
 export function setVisibilityFilter(filter) {

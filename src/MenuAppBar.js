@@ -18,17 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar(props) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  //const open = Boolean(anchorEl);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
 
   return (
     <div className={classes.root}>
@@ -50,7 +39,7 @@ export default function MenuAppBar(props) {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleMenu}
+              //onClick={handleMenu}
               color="inherit"
             >
               <AccountCircle />
