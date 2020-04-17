@@ -10,9 +10,7 @@ const { SHOW_ALL } = VisibilityFilters;
 function workoutSpecs(state = {}, action) {
   switch (action.type) {
     case UPDATE_WORKOUT_SPECS:
-      return {
-        workoutSpecs: action.workoutSpecs,
-      };
+      return action.payload;
     default:
       return state;
   }

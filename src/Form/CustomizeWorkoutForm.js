@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { Button } from "@material-ui/core";
 import * as Yup from "yup";
@@ -9,9 +9,11 @@ import CheckboxGroup from "../Shared/CheckboxGroup";
 import { useDispatch } from "react-redux";
 import { updateWorkoutSpecs } from "../actions";
 import "../Styles/WorkoutForm.css";
+import { Redirect } from "react-router";
 
 function CustomizeWorkoutForm() {
   const dispatch = useDispatch();
+  const [isSubmitted, setSubmitted] = useState(false);
 
   let validationSchema = Yup.object().shape({
     rounds: Yup.number()
@@ -22,11 +24,15 @@ function CustomizeWorkoutForm() {
     restLength: Yup.string().required("Please Enter a Time"),
   });
 
-  function createWorkout(data) {
+  const onSubmit = async (data) => {
+    console.log(data);
     dispatch(updateWorkoutSpecs(data));
-  }
+    setSubmitted(true);
+  };
 
-  return (
+  return isSubmitted ? (
+    <Redirect to="/workout" />
+  ) : (
     <div className="WorkoutForm">
       <Formik
         validateOnChange={true}
@@ -38,10 +44,7 @@ function CustomizeWorkoutForm() {
         }}
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
-          setSubmitting(true);
-          createWorkout(data);
-          console.log("submit: ", data);
-          setSubmitting(false);
+          onSubmit(data);
         }}
       >
         {({ values, errors, isSubmitting, setFieldValue }) => (

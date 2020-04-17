@@ -18,7 +18,7 @@ export const VisibilityFilters = {
  */
 
 export function updateWorkoutSpecs(workoutSpecs) {
-  return { type: UPDATE_WORKOUT_SPECS, workoutSpecs };
+  return { type: UPDATE_WORKOUT_SPECS, payload: workoutSpecs };
 }
 
 export function setVisibilityFilter(filter) {
