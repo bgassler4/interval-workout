@@ -1,7 +1,12 @@
 {
-    "exercises" : [
-        {"name" : "squat jumps", "type" : "bodyweight" },
-        {"name" : "push ups", "type" : "bodyweight" },
-        {"name" : "pull ups", "type" : "bodyweight" }
-    ]
+  "exercises": [
+    { "name": "Squat Jumps", "type": "bodyweight", "id": 1 },
+    { "name": "Push Ups", "type": "bodyweight", "id": 2 },
+    { "name": "Pull Ups", "type": "bodyweight", "id": 3 },
+    { "name": "Sit Ups", "type": "bodyweight", "id": 4 },
+    { "name": "Inch Worms", "type": "bodyweight", "id": 5 },
+    { "name": "Mountain Climbers", "type": "bodyweight", "id": 6 },
+    { "name": "T Press push up", "type": "bodyweight", "id": 7 },
+    { "name": "Reverse Lunges ", "type": "bodyweight", "id": 8 }
+  ]
 }
