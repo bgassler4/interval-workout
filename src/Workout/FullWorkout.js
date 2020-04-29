@@ -1,61 +1,59 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import CircularLoading from "../Shared/CircularLoading";
 import { Redirect } from "react-router";
-import { fetchWorkout } from "../WorkoutCreator";
-import RoundSummary from "./RoundSummary";
+import { createWorkout } from "../WorkoutCreator";
+import RoundSummaryWrapper from "./RoundSummaryWrapper";
+import { fetchExercises } from "../Http/HttpHelpers";
+import WorkoutSummary from "./WorkoutSummary";
 
 function FullWorkout() {
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
-  const [loading, setLoading] = useState(true);
   const [workout, setWorkout] = useState([]);
-
-  const retrieveWorkout = async () => {
-    const response = await fetchWorkout(workoutSpecs);
-    return response;
-  };
+  const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    if (!workoutSpecsNullOrEmpty(workoutSpecs)) {
-      retrieveWorkout()
-        .then((res) => {
-          setLoading(false);
-          setWorkout(res);
-          return res;
-        })
-        .then((res) => console.log("Response: " + res))
-        .catch((err) => console.log("Error: " + err));
-    }
+    const retrieveExercises = async () => {
+      const response = await fetchExercises();
+      if (!response) {
+        console.log("ERROR");
+        return;
+      }
+      const equipmentFilteredExercises = response.results.filter(
+        (exercise) => exercise.equipment.length === 0
+      );
+      const exArray = equipmentFilteredExercises.map((exercise) => {
+        return {
+          id: exercise.id,
+          name: exercise.name,
+          description: exercise.description,
+        };
+      });
+      setExercises(exArray);
+    };
+    retrieveExercises();
   }, []);
 
-  const workoutSpecsNullOrEmpty = (workoutSpecs) => {
-    return !workoutSpecs || Object.keys(workoutSpecs).length === 0;
+  //call create workout once the exercises have been loaded from the API
+  useEffect(() => {
+    if (!exercises || exercises.length === 0) return;
+    if (!workoutSpecs) return;
+
+    const workout = createWorkout(workoutSpecs, exercises);
+    setWorkout(workout);
+  }, [workoutSpecs, exercises]);
+
+  const objectNullOrEmpty = (object) => {
+    return !object || Object.keys(object).length === 0;
   };
 
-  if (workoutSpecsNullOrEmpty(workoutSpecs)) {
+  if (objectNullOrEmpty(workoutSpecs)) {
     return <Redirect to="" />; //redirect back to form if workoutSpecs is null/undefined or empty
-  }
-  if (!workoutSpecsNullOrEmpty(workoutSpecs) && loading) {
-    return <CircularLoading />;
   }
 
   return (
     <div>
-      <h1>Your Workout</h1>
-      <h3>
-        Rounds: {workoutSpecs.rounds} Loading: {loading}
-      </h3>
-      <h3>Round Length: {workoutSpecs.roundLength}</h3>
-      <h3>Rest Length: {workoutSpecs.restLength}</h3>
-      <h3>
-        Your Equipment:{" "}
-        {workoutSpecs.equipment?.length > 0 ? workoutSpecs.equipment : "None"}
-      </h3>
-      <div>
-        {workout.map((round) => (
-          <RoundSummary key={round.number} round={round} />
-        ))}
-      </div>
+      <WorkoutSummary workoutSpecs={workoutSpecs} />
+      <RoundSummaryWrapper workout={workout} className="round-summary" />
     </div>
   );
 }

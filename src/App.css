@@ -26,6 +26,7 @@
 
 .round-summary {
   text-align: center;
+  border: 1px solid black;
 }
 
 @keyframes App-logo-spin {
