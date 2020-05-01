@@ -1,18 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import AccessTimeSharpIcon from "@material-ui/icons/AccessTimeSharp";
 import TimeWorkoutSummaryComponent from "./TimeWorkoutSummaryComponent";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  root: {},
+  container: {
+    display: "grid",
+    "grid-gap": "20px",
+    "grid-template-columns": "auto auto",
   },
   paper: {
     padding: theme.spacing(2),
@@ -26,13 +27,13 @@ function WorkoutSummary(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={10}>
-          <Paper className={classes.paper}>
-            <h1>Your Workout</h1>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+      <div>
+        <Paper className={classes.paper}>
+          <h1>Your Workout</h1>
+        </Paper>
+      </div>
+      <div className={classes.container}>
+        <div>
           {" "}
           <List>
             <ListItem>
@@ -42,7 +43,7 @@ function WorkoutSummary(props) {
               <ListItemText primary=" Rounds" />
             </ListItem>
           </List>
-        </Grid>
+        </div>
         <TimeWorkoutSummaryComponent
           time={props.workoutSpecs.roundLength}
           label="Round Length"
@@ -51,7 +52,7 @@ function WorkoutSummary(props) {
           time={props.workoutSpecs.restLength}
           label="Rest Length"
         />
-        <Grid item xs={12} sm={6}>
+        <div>
           {" "}
           <List>
             <ListItem>
@@ -70,8 +71,8 @@ function WorkoutSummary(props) {
               />
             </ListItem>
           </List>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 }

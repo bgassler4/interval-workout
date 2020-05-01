@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { createWorkout } from "../WorkoutCreator";
 import RoundSummaryWrapper from "./RoundSummaryWrapper";
-import { fetchExercises } from "../Http/HttpHelpers";
+//import { fetchExercises } from "../Http/HttpHelpers";
+import { fetchExercisesTest } from "../Http/HttpHelpers";
 import WorkoutSummary from "./WorkoutSummary";
+import { Button } from "@material-ui/core";
 
 function FullWorkout() {
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
@@ -13,7 +15,7 @@ function FullWorkout() {
 
   useEffect(() => {
     const retrieveExercises = async () => {
-      const response = await fetchExercises();
+      const response = await fetchExercisesTest();
       if (!response) {
         console.log("ERROR");
         return;
@@ -51,8 +53,11 @@ function FullWorkout() {
   }
 
   return (
-    <div>
+    <div className="workout-summary">
       <WorkoutSummary workoutSpecs={workoutSpecs} />
+      <Button type="submit" value="Submit" variant="contained" color="primary">
+        GET TO IT
+      </Button>
       <RoundSummaryWrapper workout={workout} className="round-summary" />
     </div>
   );

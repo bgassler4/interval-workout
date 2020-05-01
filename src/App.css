@@ -29,6 +29,10 @@
   border: 1px solid black;
 }
 
+.workout-summary {
+  align-items: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
