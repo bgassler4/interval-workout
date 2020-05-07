@@ -1,5 +1,4 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { materialTheme } from "../Styles/materialTheme";
 
@@ -9,14 +8,13 @@ const useStyles = makeStyles((theme) => ({
     background: materialTheme.palette.secondary.main,
     textAlign: "center",
     color: "#ffffff",
+    "font-weight": 900,
+    "font-size": "35px",
+    "border-radius": "3px",
   },
 }));
 
 export default function RoundSummaryHeader(props) {
   const classes = useStyles();
-  return (
-    <Grid item>
-      <div className={classes.root}>Round {props.roundNumber}</div>
-    </Grid>
-  );
+  return <div className={classes.root}>Round {props.roundNumber}</div>;
 }

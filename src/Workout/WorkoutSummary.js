@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -13,12 +12,17 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "grid",
     "grid-gap": "20px",
-    "grid-template-columns": "auto auto",
+    "grid-template-columns": "1fr 1fr",
+    "grid-template-rows": "repeat(3, 1fr)",
+    border: "10px solid yellow",
   },
-  paper: {
-    padding: theme.spacing(2),
+  header: {
+    "grid-column": "1 / -1",
+    color: theme.palette.text.main,
+    border: "1px solid black",
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    background: "rgb(243,205,5)",
+    padding: "10px",
   },
 }));
 
@@ -26,13 +30,11 @@ function WorkoutSummary(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div>
-        <Paper className={classes.paper}>
-          <h1>Your Workout</h1>
-        </Paper>
+    <div className={classes.container}>
+      <div className={classes.header}>
+        <h1>Your Workout</h1>
       </div>
-      <div className={classes.container}>
+      <div>
         <div>
           {" "}
           <List>
@@ -48,10 +50,8 @@ function WorkoutSummary(props) {
           time={props.workoutSpecs.roundLength}
           label="Round Length"
         />
-        <TimeWorkoutSummaryComponent
-          time={props.workoutSpecs.restLength}
-          label="Rest Length"
-        />
+      </div>
+      <div>
         <div>
           {" "}
           <List>
@@ -72,6 +72,10 @@ function WorkoutSummary(props) {
             </ListItem>
           </List>
         </div>
+        <TimeWorkoutSummaryComponent
+          time={props.workoutSpecs.restLength}
+          label="Rest Length"
+        />
       </div>
     </div>
   );

@@ -10,8 +10,9 @@ function App() {
     <div className="App">
       <ThemeProvider theme={materialTheme}>
         <MenuAppBar />
-        <BaseRouter />
-        <br />
+        <div className="main-body">
+          <BaseRouter />
+        </div>
       </ThemeProvider>
     </div>
   );
