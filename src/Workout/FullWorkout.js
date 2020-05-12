@@ -12,6 +12,7 @@ function FullWorkout() {
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
   const [workout, setWorkout] = useState([]);
   const [exercises, setExercises] = useState([]);
+  const [readyToStart, setReadyToStart] = useState(false);
 
   useEffect(() => {
     const retrieveExercises = async () => {
@@ -52,12 +53,27 @@ function FullWorkout() {
     return <Redirect to="" />; //redirect back to form if workoutSpecs is null/undefined or empty
   }
 
-  return (
-    <div className="workout-summary">
+  const onSubmit = (e) => {
+    setReadyToStart(true);
+  };
+
+  return readyToStart ? (
+    <Redirect to="/crush-workout" />
+  ) : (
+    <div className="full-workout">
       <WorkoutSummary workoutSpecs={workoutSpecs} />
-      <Button type="submit" value="Submit" variant="contained" color="primary">
-        GET TO IT
-      </Button>
+      <div>
+        <Button
+          type="submit"
+          value="Submit"
+          variant="contained"
+          color="primary"
+          onClick={onSubmit}
+        >
+          GET TO IT
+        </Button>
+      </div>
+
       <RoundSummaryWrapper workout={workout} className="round-summary" />
     </div>
   );

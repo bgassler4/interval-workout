@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     "grid-template-columns": "repeat(10, 1fr)",
     "grid-template-rows": "repeat(3, 1fr)",
     "align-items": "center",
-    border: "10px solid red",
   },
 }));
 

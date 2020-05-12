@@ -31,7 +31,7 @@ function CustomizeWorkoutForm() {
   };
 
   return isSubmitted ? (
-    <Redirect to="/workout" />
+    <Redirect to="/workout-summary" />
   ) : (
     <div className="WorkoutForm">
       <Formik

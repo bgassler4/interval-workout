@@ -12,10 +12,10 @@ const useStyles = makeStyles((theme) => ({
   round: {
     display: "grid",
     "grid-template-rows": "1fr 1fr 1fr",
-    background: "#BADA55",
     alignContent: "center",
     "grid-column": "4 / 8",
     "border-radius": "3px",
+    border: "1px solid black",
   },
   exercise: {
     display: "inline",
