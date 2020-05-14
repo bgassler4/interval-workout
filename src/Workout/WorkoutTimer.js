@@ -4,8 +4,8 @@ import "../Styles/WorkoutTimer.css";
 
 function WorkoutTimer(props) {
   const FULL_DASH_ARRAY = 283;
-  const WARNING_THRESHOLD = 10;
-  const ALERT_THRESHOLD = 5;
+  const WARNING_THRESHOLD = Math.ceil(props.time * 0.2); // last 20%
+  const ALERT_THRESHOLD = Math.ceil(props.time * 0.05); //last 5%;
 
   const COLOR_CODES = {
     info: {
@@ -23,9 +23,7 @@ function WorkoutTimer(props) {
 
   let remainingPathColor = COLOR_CODES.info.color;
 
-  const timeInSeconds = parseTime(props.time);
-
-  const TIME_LIMIT = timeInSeconds;
+  const TIME_LIMIT = props.time;
 
   let timePassed = 0;
   let timeLeft = TIME_LIMIT;
@@ -42,11 +40,6 @@ function WorkoutTimer(props) {
     }
 
     return `${minutes}:${seconds}`;
-  }
-
-  function parseTime(time) {
-    const [mins, secs] = time.split(":").map(parseFloat);
-    return mins * 60 + secs;
   }
 
   function startTimer() {
@@ -125,7 +118,7 @@ function WorkoutTimer(props) {
         </g>
       </svg>
       <span id="base-timer-label" className="base-timer__label">
-        {formatTime(parseTime(props.time))}
+        {formatTime(props.time)}
       </span>
     </div>
   );

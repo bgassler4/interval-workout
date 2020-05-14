@@ -14,14 +14,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const objectNullOrEmpty = (object) => {
+  return !object || Object.keys(object).length === 0;
+};
+
 function CrushWorkout(props) {
   const classes = useStyles();
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
-  console.log(workoutSpecs);
+  if (objectNullOrEmpty(workoutSpecs)) {
+    //just for testing
+    workoutSpecs = {
+      equipment: [],
+      restLength: "00:30",
+      roundLength: "03:00",
+      rounds: 12,
+    };
+  }
+
+  function parseTime(time) {
+    const [mins, secs] = time.split(":").map(parseFloat);
+    return mins * 60 + secs;
+  }
+
+  let timerInterval = null;
+
+  function getCurrentTime() {
+    for (let i = 0; i < workoutSpecs.round; i++) {
+      timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = TIME_LIMIT - timePassed;
+
+        if (timeLeft == 0) {
+          clearInterval(timerInterval);
+        }
+        return currentTime;
+      }, 1000);
+    }
+  }
+
+  currentTime = getCurrentTime();
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer time="1:35" />
+      <WorkoutTimer time={90} />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>
