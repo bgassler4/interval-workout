@@ -20,7 +20,7 @@ const objectNullOrEmpty = (object) => {
 
 function CrushWorkout(props) {
   const classes = useStyles();
-  const workoutSpecs = useSelector((state) => state.workoutSpecs);
+  let workoutSpecs = useSelector((state) => state.workoutSpecs);
   if (objectNullOrEmpty(workoutSpecs)) {
     //just for testing
     workoutSpecs = {
@@ -31,32 +31,9 @@ function CrushWorkout(props) {
     };
   }
 
-  function parseTime(time) {
-    const [mins, secs] = time.split(":").map(parseFloat);
-    return mins * 60 + secs;
-  }
-
-  let timerInterval = null;
-
-  function getCurrentTime() {
-    for (let i = 0; i < workoutSpecs.round; i++) {
-      timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
-
-        if (timeLeft == 0) {
-          clearInterval(timerInterval);
-        }
-        return currentTime;
-      }, 1000);
-    }
-  }
-
-  currentTime = getCurrentTime();
-
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer time={90} />
+      <WorkoutTimer />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>

@@ -7,6 +7,7 @@ import RoundSummaryWrapper from "./RoundSummaryWrapper";
 import { fetchExercisesTest } from "../Http/HttpHelpers";
 import WorkoutSummary from "./WorkoutSummary";
 import { Button } from "@material-ui/core";
+import "../Styles/FullWorkout.css";
 
 function FullWorkout() {
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
@@ -62,17 +63,6 @@ function FullWorkout() {
   ) : (
     <div className="full-workout">
       <WorkoutSummary workoutSpecs={workoutSpecs} />
-      <div>
-        <Button
-          type="submit"
-          value="Submit"
-          variant="contained"
-          color="primary"
-          onClick={onSubmit}
-        >
-          GET TO IT
-        </Button>
-      </div>
 
       <RoundSummaryWrapper workout={workout} className="round-summary" />
     </div>

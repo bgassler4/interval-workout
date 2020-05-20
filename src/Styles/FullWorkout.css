@@ -1,0 +1,17 @@
+.full-workout {
+  align-items: center;
+  display: grid;
+  grid-template-rows: 500px 1fr;
+  grid-gap: 20px;
+}
+
+.get-it {
+  background: red;
+  border: 0;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+}
