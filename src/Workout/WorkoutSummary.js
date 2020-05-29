@@ -76,7 +76,7 @@ function WorkoutSummary(props) {
         value="Submit"
         variant="contained"
         color="primary"
-        //onClick={onSubmit}
+        onClick={props.onSubmit}
       >
         GET IT
       </Button>

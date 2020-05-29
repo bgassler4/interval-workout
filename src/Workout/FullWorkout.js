@@ -56,6 +56,7 @@ function FullWorkout() {
   }
 
   const onSubmit = (e) => {
+    debugger;
     setReadyToStart(true);
   };
 
@@ -63,7 +64,7 @@ function FullWorkout() {
     <Redirect to="/crush-workout" />
   ) : (
     <div className="full-workout">
-      <WorkoutSummary workoutSpecs={workoutSpecs} />
+      <WorkoutSummary workoutSpecs={workoutSpecs} onSubmit={onSubmit} />
 
       <RoundSummaryWrapper workout={workout} className="round-summary" />
     </div>

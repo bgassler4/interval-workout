@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import WorkoutTimer from "./WorkoutTimer";
+import WorkoutTimerLogic from "./WorkoutTimerLogic";
 
 const useStyles = makeStyles((theme) => ({
   workoutCrusher: {
@@ -20,6 +20,7 @@ const objectNullOrEmpty = (object) => {
 
 function CrushWorkout(props) {
   const classes = useStyles();
+  const [time, setTime] = React.useState(100);
   let workoutSpecs = useSelector((state) => state.workoutSpecs);
   if (objectNullOrEmpty(workoutSpecs)) {
     //just for testing
@@ -31,11 +32,18 @@ function CrushWorkout(props) {
     };
   }
 
+  // const test = () => {
+  //   setTime(30);
+  // };
+
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer />
+      <WorkoutTimerLogic time={time} />
       <div>
         <strong>CURRENT ROUND!</strong>
+      </div>
+      <div>
+        <button>{time}</button>
       </div>
     </div>
   );
