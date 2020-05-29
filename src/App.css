@@ -1,3 +1,14 @@
+html {
+  /* background: rgb(30, 39, 97);
+  background: linear-gradient(
+    45deg,
+    rgba(30, 39, 97, 1) 9%,
+    rgba(32, 90, 122, 1) 52%,
+    rgba(64, 132, 198, 1) 88%
+  );
+  color: white; */
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

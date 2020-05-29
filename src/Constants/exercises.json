@@ -3,15 +3,157 @@
     "results": [
       {
         "id": 1,
-        "description": "Two Handed Russian Style Kettlebell swing",
-        "name": "2 Handed Kettlebell Swing",
-        "equipment": [10]
+        "description": "",
+        "name": "Bodyweight Squat",
+        "equipment": [],
+        "category": "Lower Body"
       },
       {
         "id": 2,
-        "description": "Perform a traditional dumbbell biceps curl, pausing at the top of the motion",
-        "name": "Z Curls",
-        "equipment": []
+        "description": "",
+        "name": "Jump Squat",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 3,
+        "description": "",
+        "name": "Forward Lunge",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 4,
+        "description": "",
+        "name": "Push Ups",
+        "equipment": [],
+        "category": "Upper Body"
+      },
+      {
+        "id": 5,
+        "description": "",
+        "name": "Mountain Climbers",
+        "equipment": [],
+        "category": "Cardio"
+      },
+      {
+        "id": 6,
+        "description": "",
+        "name": "Leg Raises",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 7,
+        "description": "",
+        "name": "Crunches",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 8,
+        "description": "",
+        "name": "Shoulder Taps",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 9,
+        "description": "",
+        "name": "Burpees",
+        "equipment": [],
+        "category": "Cardio"
+      },
+      {
+        "id": 10,
+        "description": "",
+        "name": "Lateral Lunge",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 11,
+        "description": "",
+        "name": "Squat Thrusters",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 13,
+        "description": "",
+        "name": "T Press Push Up",
+        "equipment": [],
+        "category": "Upper Body"
+      },
+      {
+        "id": 14,
+        "description": "",
+        "name": "SpiderMan Push Up",
+        "equipment": [],
+        "category": "Upper Body"
+      },
+      {
+        "id": 15,
+        "description": "",
+        "name": "Russian Twists",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 16,
+        "description": "",
+        "name": "Flutter Kick",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 17,
+        "description": "",
+        "name": "Reverse Crunch",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 18,
+        "description": "",
+        "name": "Bicycle Crunches",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 20,
+        "description": "",
+        "name": "Tuck Jump",
+        "equipment": [],
+        "category": "Cardio"
+      },
+      {
+        "id": 21,
+        "description": "",
+        "name": "Jumping Lunge",
+        "equipment": [],
+        "category": "Cardio"
+      },
+      {
+        "id": 22,
+        "description": "",
+        "name": "Jumping Skater Squat",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 23,
+        "description": "",
+        "name": "Glute Bridge",
+        "equipment": [],
+        "category": "Lower Body"
+      },
+      {
+        "id": 23,
+        "description": "",
+        "name": "Side Plank",
+        "equipment": [],
+        "category": "Core"
       }
     ]
   }

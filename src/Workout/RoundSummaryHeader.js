@@ -8,9 +8,8 @@ const useStyles = makeStyles((theme) => ({
     background: materialTheme.palette.secondary.main,
     textAlign: "center",
     color: "#ffffff",
-    "font-weight": 900,
+    "font-weight": 700,
     "font-size": "35px",
-    "border-radius": "3px",
   },
 }));
 

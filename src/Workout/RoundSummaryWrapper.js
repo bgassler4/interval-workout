@@ -11,10 +11,11 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   round_container: {
     display: "grid",
-    "grid-gap": "20px",
-    "grid-template-columns": "repeat(10, 1fr)",
-    "grid-template-rows": "repeat(3, 1fr)",
-    "align-items": "center",
+    gridGap: "20px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 350px))",
+    gridTemplateRows: "repeat(3, 1fr)",
+    alignItems: "center",
+    justifyContent: "center",
   },
 }));
 

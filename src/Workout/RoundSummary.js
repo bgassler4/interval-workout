@@ -1,21 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import AccessTimeSharpIcon from "@material-ui/icons/AccessTimeSharp";
 import RoundSummaryHeader from "./RoundSummaryHeader";
+import Emoji from "../Shared/Emoji";
 
 const useStyles = makeStyles((theme) => ({
   round: {
     display: "grid",
     "grid-template-rows": "1fr 1fr 1fr",
     alignContent: "center",
-    "grid-column": "4 / 8",
     "border-radius": "3px",
-    border: "1px solid black",
+    textAlign: "center",
+    boxShadow:
+      "0 0 1px 0 rgba(42, 42, 42, 0.4), 0 3px 4px 0 rgba(42, 42, 42, 0.2)",
   },
   exercise: {
     display: "inline",
@@ -25,21 +21,33 @@ const useStyles = makeStyles((theme) => ({
 export default function RoundSummary(props) {
   const classes = useStyles();
 
+  function getEmoji(exerciseType) {
+    let emoji;
+    switch (exerciseType) {
+      case "Upper Body":
+        emoji = "💪";
+        break;
+      case "Lower Body":
+        emoji = "🦵";
+        break;
+      case "Cardio":
+        emoji = "💓";
+        break;
+      case "Core":
+        emoji = "🌎";
+        break;
+    }
+    return emoji;
+  }
+
   return (
     <div className={classes.round}>
       <RoundSummaryHeader roundNumber={props.round.number} />
-      {props.round.exercises.map((exercise) => (
-        <div key={exercise.id}>
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <AccessTimeSharpIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={exercise.name} secondary="Body Part" />
-            </ListItem>
-          </List>
+      {props.round.exercises.map((exercise, index) => (
+        <div key={index}>
+          <div>{exercise.name}</div>
+          <Emoji label={exercise.name} emoji={getEmoji(exercise.category)} />
+          {/* <div className="exercise-category">{exercise.category}</div> */}
         </div>
       ))}
     </div>

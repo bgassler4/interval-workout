@@ -1,12 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import TimeWorkoutSummaryComponent from "./TimeWorkoutSummaryComponent";
 import { Button } from "@material-ui/core";
+import Emoji from "../Shared/Emoji";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -14,27 +9,32 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     gridGap: "20px",
     "grid-template-columns": "1fr",
-    "grid-template-rows": "repeat(2, 1fr) auto",
-    border: "10px solid yellow",
+    "grid-template-rows": "1fr 2fr auto",
+    boxShadow: "0 0 10px rgba(0,0,0,0.3)",
   },
   header: {
     gridColumn: "1 / -1",
     color: theme.palette.text.main,
-    border: "1px solid black",
     textAlign: "center",
     background: "rgb(243,205,5)",
     padding: "10px",
   },
   summary: {
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    justifyItems: "center",
+    gridTemplateColumns: "repeat(auto-fill, minmax(75px, 350px))",
+    justifyContent: "space-evenly",
+    gridGap: "30px",
+    fontWeight: 500,
+    fontSize: "30px",
+  },
+  "summary-item": {
+    textAlign: "start",
   },
   submit: {
     gridColumn: "1 / -1",
     justifySelf: "center",
     width: "30%",
+    margin: "0 0 10px 0",
   },
 }));
 
@@ -47,49 +47,26 @@ function WorkoutSummary(props) {
         <h1>Your Workout</h1>
       </div>
       <div className={classes.summary}>
-        <div>
-          <div>
-            {" "}
-            <List>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>{props.workoutSpecs.rounds}</Avatar>
-                </ListItemAvatar>
-                <ListItemText primary=" Rounds" />
-              </ListItem>
-            </List>
-          </div>
-          <TimeWorkoutSummaryComponent
-            time={props.workoutSpecs.roundLength}
-            label="Round Length"
-          />
+        <div className={classes["summary-item"]}>
+          <Emoji label="rounds" emoji="🥊" />
+          <span>{props.workoutSpecs.rounds} Rounds</span>
         </div>
-        <div>
-          <div>
-            {" "}
-            <List>
-              <ListItem>
-                <ListItemAvatar>
-                  <img
-                    src={require("../Assets/weights-icon-sm.png")}
-                    alt="Equipment"
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={
-                    "Your Equipment: " + props.workoutSpecs.equipment?.length >
-                    0
-                      ? props.workoutSpecs.equipment
-                      : "None"
-                  }
-                />
-              </ListItem>
-            </List>
-          </div>
-          <TimeWorkoutSummaryComponent
-            time={props.workoutSpecs.restLength}
-            label="Rest Length"
-          />
+        <div className={classes["summary-item"]}>
+          <Emoji emoji="🕒" label="timer" />
+          <span>Round Length : {props.workoutSpecs.roundLength}</span>
+        </div>
+        <div className={classes["summary-item"]}>
+          {" "}
+          <Emoji label="strongman" emoji="🏋" />
+          <span>
+            {"Your Equipment: " + props.workoutSpecs.equipment?.length > 0
+              ? props.workoutSpecs.equipment
+              : "None"}
+          </span>
+        </div>
+        <div className={classes["summary-item"]}>
+          <Emoji emoji="⏰" label="timer" />
+          <span>Rest Length : {props.workoutSpecs.restLength}</span>
         </div>
       </div>
 
@@ -101,7 +78,7 @@ function WorkoutSummary(props) {
         color="primary"
         //onClick={onSubmit}
       >
-        GET TO IT
+        GET IT
       </Button>
     </div>
   );

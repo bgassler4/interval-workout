@@ -6,7 +6,6 @@ import RoundSummaryWrapper from "./RoundSummaryWrapper";
 //import { fetchExercises } from "../Http/HttpHelpers";
 import { fetchExercisesTest } from "../Http/HttpHelpers";
 import WorkoutSummary from "./WorkoutSummary";
-import { Button } from "@material-ui/core";
 import "../Styles/FullWorkout.css";
 
 function FullWorkout() {
@@ -23,6 +22,7 @@ function FullWorkout() {
         return;
       }
       const equipmentFilteredExercises = response.results.filter(
+        //filtering for only bodyweight exercises at the moment
         (exercise) => exercise.equipment.length === 0
       );
       const exArray = equipmentFilteredExercises.map((exercise) => {
@@ -30,6 +30,7 @@ function FullWorkout() {
           id: exercise.id,
           name: exercise.name,
           description: exercise.description,
+          category: exercise.category,
         };
       });
       setExercises(exArray);
