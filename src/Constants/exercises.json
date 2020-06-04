@@ -149,9 +149,16 @@
         "category": "Lower Body"
       },
       {
-        "id": 23,
+        "id": 24,
         "description": "",
         "name": "Side Plank",
+        "equipment": [],
+        "category": "Core"
+      },
+      {
+        "id": 25,
+        "description": "",
+        "name": "Leg Scissors",
         "equipment": [],
         "category": "Core"
       }
