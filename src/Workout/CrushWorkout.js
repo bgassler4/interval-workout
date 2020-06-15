@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import WorkoutTimerLogic from "./WorkoutTimerLogic";
+import WorkoutTimer from "./WorkoutTimer";
 
 const useStyles = makeStyles((theme) => ({
   workoutCrusher: {
@@ -38,7 +38,7 @@ function CrushWorkout(props) {
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimerLogic time={time} />
+      <WorkoutTimer />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>
