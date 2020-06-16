@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function Emoji(props) {
+export default function Emoji({ label = "", emoji = "" }) {
   return (
     <span
       role="img"
-      aria-label={props.label ?? ""}
-      aria-hidden={props.label ? "false" : "true"}
+      aria-label={label ?? ""}
+      aria-hidden={label ? "false" : "true"}
     >
-      {props.emoji}
+      {emoji}
     </span>
   );
 }

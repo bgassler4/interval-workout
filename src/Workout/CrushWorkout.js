@@ -18,9 +18,9 @@ const objectNullOrEmpty = (object) => {
   return !object || Object.keys(object).length === 0;
 };
 
-function CrushWorkout(props) {
+function CrushWorkout() {
   const classes = useStyles();
-  const [time, setTime] = React.useState(100);
+  const [time, setTime] = React.useState(13);
   let workoutSpecs = useSelector((state) => state.workoutSpecs);
   if (objectNullOrEmpty(workoutSpecs)) {
     //just for testing
@@ -32,18 +32,18 @@ function CrushWorkout(props) {
     };
   }
 
-  // const test = () => {
-  //   setTime(30);
-  // };
+  const test = () => {
+    setTime(17);
+  };
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer />
+      <WorkoutTimer time={time} />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>
       <div>
-        <button>{time}</button>
+        <button onClick={() => test()}>{time}</button>
       </div>
     </div>
   );

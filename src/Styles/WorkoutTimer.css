@@ -4,10 +4,10 @@ h1 {
   margin-bottom: 40px;
 }
 
-.timer-wrapper {
+/* .timer-wrapper {
   display: flex;
   justify-content: center;
-}
+} */
 
 .timer {
   font-family: "Montserrat";
