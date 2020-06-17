@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../Styles/workoutTimer.css";
 
-function WorkoutTimer({}) {
+function WorkoutTimer({ times = [] }) {
   const [restartKey, setRestartKey] = useState(0); //key to update when timer needs to be restarted
-  const [time, setTime] = useState(11);
+  const [time, setTime] = useState(times[restartKey]); //use the restart key as the index for what time to be used
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
@@ -20,9 +20,11 @@ function WorkoutTimer({}) {
   };
 
   const afterTimerDone = () => {
-    setTime(7);
-    setRestartKey(1);
-    return [false, 1000];
+    //updating the index and then setting the time to the next time
+    const newRestartKey = restartKey + 1;
+    if (newRestartKey > times.length) return;
+    setTime(times[newRestartKey]);
+    setRestartKey(newRestartKey);
   };
 
   return (

@@ -26,24 +26,22 @@ function CrushWorkout() {
     //just for testing
     workoutSpecs = {
       equipment: [],
-      restLength: "00:30",
-      roundLength: "03:00",
+      restLength: 10,
+      roundLength: 60,
       rounds: 12,
     };
   }
 
-  const test = () => {
-    setTime(17);
+  const timeArrayGenerator = (rounds, roundLength, restLength) => {
+    //hard coded for testing
+    return [20, 10, 20, 10, 20, 10];
   };
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer time={time} key={time} />
+      <WorkoutTimer times={timeArrayGenerator()} />
       <div>
         <strong>CURRENT ROUND!</strong>
-      </div>
-      <div>
-        <button onClick={() => test()}>{time}</button>
       </div>
     </div>
   );
