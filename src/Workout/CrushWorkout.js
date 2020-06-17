@@ -38,7 +38,7 @@ function CrushWorkout() {
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer time={time} />
+      <WorkoutTimer time={time} key={time} />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>
