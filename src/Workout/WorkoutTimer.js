@@ -34,7 +34,7 @@ function WorkoutTimer({ times = [] }) {
   const afterTimerDone = () => {
     //updating the index and then setting the time to the next time
     const newRestartKey = restartKey + 1;
-    if (newRestartKey > times.length) return;
+    if (newRestartKey == times.length) return;
     setTime(times[newRestartKey]);
     setRestartKey(newRestartKey);
   };

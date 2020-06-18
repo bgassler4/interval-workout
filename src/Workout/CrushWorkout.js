@@ -51,7 +51,6 @@ function CrushWorkout() {
       if (i % 2 === 0) timeArray.push(roundLengthSeconds);
       else timeArray.push(restLengthSeconds);
     }
-    debugger;
     return timeArray;
   };
 
