@@ -10,13 +10,25 @@ function WorkoutTimer({ times = [] }) {
       return <div className="timer">Too late...</div>;
     }
 
+    const formattedTime = formatTime(remainingTime);
+
     return (
       <div className="timer">
+        <div className="text"></div>
+        <div className="value">{formattedTime}</div>
         <div className="text">Remaining</div>
-        <div className="value">{remainingTime}</div>
-        <div className="text">seconds</div>
       </div>
     );
+  };
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const formattedTime = `${minutes}:${
+      remainderSeconds < 10 ? "0" : ""
+    }${remainderSeconds}`;
+
+    return formattedTime;
   };
 
   const afterTimerDone = () => {

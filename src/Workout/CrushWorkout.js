@@ -20,26 +20,44 @@ const objectNullOrEmpty = (object) => {
 
 function CrushWorkout() {
   const classes = useStyles();
-  const [time, setTime] = React.useState(13);
   let workoutSpecs = useSelector((state) => state.workoutSpecs);
   if (objectNullOrEmpty(workoutSpecs)) {
     //just for testing
     workoutSpecs = {
       equipment: [],
-      restLength: 10,
-      roundLength: 60,
+      restLength: "00:30",
+      roundLength: "03:00",
       rounds: 12,
     };
   }
 
-  const timeArrayGenerator = (rounds, roundLength, restLength) => {
-    //hard coded for testing
-    return [20, 10, 20, 10, 20, 10];
+  const timeStringToSeconds = (timeString) => {
+    //mapping string from "04:30" format to int seconds;
+    const [minutes, seconds] = timeString.split(":").map((element) => {
+      return parseInt(element);
+    });
+
+    return minutes * 60 + seconds;
+  };
+
+  const timeArrayGenerator = ({ rounds, roundLength, restLength }) => {
+    //mapping the number of rounds / rests to an array corresponding to the amount of time
+
+    const roundLengthSeconds = timeStringToSeconds(roundLength);
+    const restLengthSeconds = timeStringToSeconds(restLength);
+
+    const timeArray = [];
+    for (let i = 0; i < rounds; i++) {
+      if (i % 2 === 0) timeArray.push(roundLengthSeconds);
+      else timeArray.push(restLengthSeconds);
+    }
+    debugger;
+    return timeArray;
   };
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer times={timeArrayGenerator()} />
+      <WorkoutTimer times={timeArrayGenerator(workoutSpecs)} />
       <div>
         <strong>CURRENT ROUND!</strong>
       </div>
