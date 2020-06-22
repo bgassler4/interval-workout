@@ -3,8 +3,9 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../Styles/workoutTimer.css";
 
 function WorkoutTimer({ times = [] }) {
-  const [restartKey, setRestartKey] = useState(0); //key to update when timer needs to be restarted
-  const [time, setTime] = useState(times[restartKey]); //use the restart key as the index for what time to be used
+  const [round, setRound] = useState(1); //the current round of the workout
+  debugger;
+  const [time, setTime] = useState(times[round - 1]); //use the round - 1 as the index for what time to be used
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
@@ -33,17 +34,16 @@ function WorkoutTimer({ times = [] }) {
 
   const afterTimerDone = () => {
     //updating the index and then setting the time to the next time
-    const newRestartKey = restartKey + 1;
-    if (newRestartKey == times.length) return;
-    setTime(times[newRestartKey]);
-    setRestartKey(newRestartKey);
+    const nextRound = round + 1;
+    if (nextRound === times.length) return;
+    setTime(times[nextRound - 1]);
+    setRound(nextRound);
   };
 
   return (
     <div className="timer-wrapper">
-      TIME: {time}
       <CountdownCircleTimer
-        key={restartKey}
+        key={round}
         isPlaying
         duration={time}
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
@@ -51,6 +51,11 @@ function WorkoutTimer({ times = [] }) {
       >
         {renderTime}
       </CountdownCircleTimer>
+      <div>
+        <h1>
+          {round % 2 === 1 ? "Round" : "Rest"} {round}
+        </h1>
+      </div>
     </div>
   );
 }

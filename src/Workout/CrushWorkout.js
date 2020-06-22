@@ -6,7 +6,6 @@ import WorkoutTimer from "./WorkoutTimer";
 const useStyles = makeStyles((theme) => ({
   workoutCrusher: {
     display: "grid",
-    "grid-template-columns": "1fr 1fr",
     "grid-template-rows": "2fr 1fr",
     "grid-gap": "20px",
     placeItems: "center center",
@@ -22,11 +21,11 @@ function CrushWorkout() {
   const classes = useStyles();
   let workoutSpecs = useSelector((state) => state.workoutSpecs);
   if (objectNullOrEmpty(workoutSpecs)) {
-    //just for testing
+    //hardcoded just for testing
     workoutSpecs = {
       equipment: [],
-      restLength: "00:30",
-      roundLength: "03:00",
+      restLength: "00:05",
+      roundLength: "00:10",
       rounds: 12,
     };
   }
@@ -57,9 +56,6 @@ function CrushWorkout() {
   return (
     <div className={classes.workoutCrusher}>
       <WorkoutTimer times={timeArrayGenerator(workoutSpecs)} />
-      <div>
-        <strong>CURRENT ROUND!</strong>
-      </div>
     </div>
   );
 }

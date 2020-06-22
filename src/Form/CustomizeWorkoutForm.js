@@ -18,7 +18,7 @@ function CustomizeWorkoutForm() {
   let validationSchema = Yup.object().shape({
     rounds: Yup.number()
       .min(1, "Workout must be at least 1 round!")
-      .max(100, "Take it easy tough guy, 100 rounds max")
+      .max(100, "Take it easy tough guy or gal, 100 rounds max")
       .required("Please Enter Number of Rounds"),
     roundLength: Yup.string().required("Please Enter a Time"),
     restLength: Yup.string().required("Please Enter a Time"),
@@ -84,8 +84,6 @@ function CustomizeWorkoutForm() {
                 GET JACKED
               </Button>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
           </Form>
         )}
       </Formik>

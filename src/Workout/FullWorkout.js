@@ -56,7 +56,6 @@ function FullWorkout() {
   }
 
   const onSubmit = (e) => {
-    debugger;
     setReadyToStart(true);
   };
 
