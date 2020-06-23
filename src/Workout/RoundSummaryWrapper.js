@@ -19,15 +19,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RoundSummaryWrapper(props) {
+function RoundSummaryWrapper({ workout = [] }) {
   const classes = useStyles();
-  if (objectNullOrEmpty(props.workout)) return <CircularLoading />;
+  if (objectNullOrEmpty(workout)) return <CircularLoading />;
 
   return (
     <div className={classes.round_container}>
-      {props.workout.map((round) => (
-        <RoundSummary key={round.number} round={round} />
-      ))}
+      {workout
+        .filter((round) => !round.isRest) //don't show rest periods
+        .map((round) => (
+          <RoundSummary key={round.number} round={round} />
+        ))}
     </div>
   );
 }

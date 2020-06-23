@@ -4,8 +4,9 @@ import "../Styles/workoutTimer.css";
 
 function WorkoutTimer({ times = [] }) {
   const [round, setRound] = useState(1); //the current round of the workout
-  debugger;
+  const [completed, setCompleted] = useState(false);
   const [time, setTime] = useState(times[round - 1]); //use the round - 1 as the index for what time to be used
+
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
@@ -35,7 +36,10 @@ function WorkoutTimer({ times = [] }) {
   const afterTimerDone = () => {
     //updating the index and then setting the time to the next time
     const nextRound = round + 1;
-    if (nextRound === times.length) return;
+    if (nextRound === times.length) {
+      setCompleted(true);
+      return;
+    }
     setTime(times[nextRound - 1]);
     setRound(nextRound);
   };
@@ -51,11 +55,15 @@ function WorkoutTimer({ times = [] }) {
       >
         {renderTime}
       </CountdownCircleTimer>
-      <div>
-        <h1>
-          {round % 2 === 1 ? "Round" : "Rest"} {round}
-        </h1>
-      </div>
+      {!completed ? (
+        <div>
+          <h1>
+            {round % 2 === 1 ? "Round" : "Rest"} {round}
+          </h1>
+        </div>
+      ) : (
+        <div>Well Done!</div>
+      )}
     </div>
   );
 }

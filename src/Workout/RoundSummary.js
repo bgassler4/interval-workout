@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RoundSummary(props) {
+export default function RoundSummary({ round = {} }) {
   const classes = useStyles();
 
   function getEmoji(exerciseType) {
@@ -42,8 +42,8 @@ export default function RoundSummary(props) {
 
   return (
     <div className={classes.round}>
-      <RoundSummaryHeader roundNumber={props.round.number} />
-      {props.round.exercises.map((exercise, index) => (
+      <RoundSummaryHeader roundNumber={round.number} />
+      {round.exercises.map((exercise, index) => (
         <div key={index}>
           <div>{exercise.name}</div>
           <Emoji label={exercise.name} emoji={getEmoji(exercise.category)} />
