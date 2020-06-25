@@ -2,6 +2,7 @@
  * action types
  */
 export const UPDATE_WORKOUT_SPECS = "UPDATE_WORKOUT_SPECS";
+export const UPDATE_WORKOUT = "UPDATE_WORKOUT";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
 /*
@@ -19,6 +20,11 @@ export const VisibilityFilters = {
 
 export function updateWorkoutSpecs(workoutSpecs) {
   return { type: UPDATE_WORKOUT_SPECS, payload: workoutSpecs };
+}
+
+export function updateWorkout(workout) {
+  debugger;
+  return { type: UPDATE_WORKOUT, payload: workout };
 }
 
 export function setVisibilityFilter(filter) {

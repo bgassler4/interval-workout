@@ -7,12 +7,15 @@ import RoundSummaryWrapper from "./RoundSummaryWrapper";
 import { fetchExercisesTest } from "../Http/HttpHelpers";
 import WorkoutSummary from "./WorkoutSummary";
 import "../Styles/FullWorkout.css";
+import { updateWorkout } from "../actions";
+import { useDispatch } from "react-redux";
 
 function FullWorkout() {
   const workoutSpecs = useSelector((state) => state.workoutSpecs);
   const [workout, setWorkout] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [readyToStart, setReadyToStart] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const retrieveExercises = async () => {
@@ -44,6 +47,7 @@ function FullWorkout() {
     if (!workoutSpecs) return;
 
     const workout = createWorkout(workoutSpecs, exercises);
+    dispatch(updateWorkout(workout));
     setWorkout(workout);
   }, [workoutSpecs, exercises]);
 

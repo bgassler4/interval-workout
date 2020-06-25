@@ -20,6 +20,7 @@ const objectNullOrEmpty = (object) => {
 function CrushWorkout() {
   const classes = useStyles();
   let workout = useSelector((state) => state.workout);
+  debugger;
 
   if (objectNullOrEmpty(workout)) {
     //hardcoded just for testing
