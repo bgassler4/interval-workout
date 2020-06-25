@@ -20,21 +20,22 @@ const objectNullOrEmpty = (object) => {
 function CrushWorkout() {
   const classes = useStyles();
   let workout = useSelector((state) => state.workout);
-  debugger;
 
   if (objectNullOrEmpty(workout)) {
     //hardcoded just for testing
-    let workoutSpecs = {
-      equipment: [],
-      restLength: "00:05",
-      roundLength: "00:10",
-      rounds: 12,
-    };
+    workout = [
+      { number: 1, exercises: Array(2), time: 180, isRest: false },
+      { isRest: true, time: 30 },
+      { number: 2, exercises: Array(2), time: 180, isRest: false },
+      { isRest: true, time: 30 },
+      { number: 3, exercises: Array(2), time: 180, isRest: false },
+      { isRest: true, time: 30 },
+    ];
   }
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer times={[]} />
+      <WorkoutTimer times={[30]} />
     </div>
   );
 }
