@@ -24,11 +24,60 @@ function CrushWorkout() {
   if (objectNullOrEmpty(workout)) {
     //hardcoded just for testing
     workout = [
-      { number: 1, exercises: Array(2), time: 20, isRest: false },
+      {
+        number: 1,
+        exercises: [
+          {
+            category: "Lower Body",
+            description: "",
+            id: 3,
+            name: "Forward Lunge",
+          },
+          {
+            category: "Cardio",
+            description: "",
+            id: 20,
+            name: "Tuck Jump",
+          },
+        ],
+        time: 20,
+        isRest: false,
+      },
       { number: 1, isRest: true, time: 10 },
-      { number: 2, exercises: Array(2), time: 20, isRest: false },
+      {
+        number: 2,
+        exercises: [
+          { category: "Core", description: "", id: 15, name: "Russian Twists" },
+          {
+            category: "Cardio",
+            description: "",
+            id: 21,
+            name: "Jumping Lunge",
+          },
+        ],
+        time: 20,
+        isRest: false,
+      },
       { number: 2, isRest: true, time: 10 },
-      { number: 3, exercises: Array(2), time: 20, isRest: false },
+      {
+        number: 3,
+        exercises: [
+          {
+            category: "Lower Body",
+            description: "",
+            id: 2,
+            name: "Jump Squat",
+          },
+          {
+            category: "Upper Body",
+            description: "",
+            id: 13,
+            name: "T Press Push Up",
+          },
+        ],
+        time: 20,
+        isRest: false,
+      },
       { number: 3, isRest: true, time: 10 },
     ];
   }

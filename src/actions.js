@@ -23,7 +23,6 @@ export function updateWorkoutSpecs(workoutSpecs) {
 }
 
 export function updateWorkout(workout) {
-  debugger;
   return { type: UPDATE_WORKOUT, payload: workout };
 }
 

@@ -3,13 +3,14 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../Styles/workoutTimer.css";
 
 function WorkoutTimer({ workout = [] }) {
-  const [round, setRound] = useState(1); //the current round of the workout
+  const [workoutIndex, setWorkoutIndex] = useState(0); //index of current round/rest within the workout
+  const [round, setRound] = useState(workout[workoutIndex]); //the current round of the workout -- start at round 1
+  console.log({ round });
   const [completed, setCompleted] = useState(false);
-  const [time, setTime] = useState(workout[round - 1].time); //use the round - 1 as the index for what time to be used
 
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className="timer">Too late...</div>;
+      return <div className="timer">Workout Completed</div>;
     }
 
     const formattedTime = formatTime(remainingTime);
@@ -35,21 +36,23 @@ function WorkoutTimer({ workout = [] }) {
 
   const afterTimerDone = () => {
     //updating the index and then setting the time to the next time
-    const nextRound = round + 1;
-    if (nextRound === workout.length) {
+    const newWorkoutIndex = workoutIndex + 1;
+
+    //workout is over if all the rounds have been
+    if (newWorkoutIndex === workout.length) {
       setCompleted(true);
       return;
     }
-    setTime(workout[nextRound - 1].time);
-    setRound(nextRound);
+    setRound(workout[newWorkoutIndex]);
+    setWorkoutIndex(newWorkoutIndex);
   };
 
   return (
     <div className="timer-wrapper">
       <CountdownCircleTimer
-        key={round}
+        key={workoutIndex}
         isPlaying
-        duration={time}
+        duration={round.time}
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
         onComplete={() => afterTimerDone()}
       >
@@ -57,9 +60,7 @@ function WorkoutTimer({ workout = [] }) {
       </CountdownCircleTimer>
       {!completed ? (
         <div>
-          <h1>
-            {round % 2 === 1 ? "Round" : "Rest"} {round}
-          </h1>
+          <h1>{round.isRest ? "Rest" : `Round ${round.number}`}</h1>
         </div>
       ) : (
         <div>Well Done!</div>
