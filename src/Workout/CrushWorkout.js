@@ -24,18 +24,18 @@ function CrushWorkout() {
   if (objectNullOrEmpty(workout)) {
     //hardcoded just for testing
     workout = [
-      { number: 1, exercises: Array(2), time: 180, isRest: false },
-      { isRest: true, time: 30 },
-      { number: 2, exercises: Array(2), time: 180, isRest: false },
-      { isRest: true, time: 30 },
-      { number: 3, exercises: Array(2), time: 180, isRest: false },
-      { isRest: true, time: 30 },
+      { number: 1, exercises: Array(2), time: 20, isRest: false },
+      { number: 1, isRest: true, time: 10 },
+      { number: 2, exercises: Array(2), time: 20, isRest: false },
+      { number: 2, isRest: true, time: 10 },
+      { number: 3, exercises: Array(2), time: 20, isRest: false },
+      { number: 3, isRest: true, time: 10 },
     ];
   }
 
   return (
     <div className={classes.workoutCrusher}>
-      <WorkoutTimer times={[30]} />
+      <WorkoutTimer workout={workout} />
     </div>
   );
 }

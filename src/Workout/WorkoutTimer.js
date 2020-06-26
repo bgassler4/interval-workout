@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../Styles/workoutTimer.css";
 
-function WorkoutTimer({ times = [] }) {
+function WorkoutTimer({ workout = [] }) {
   const [round, setRound] = useState(1); //the current round of the workout
   const [completed, setCompleted] = useState(false);
-  const [time, setTime] = useState(times[round - 1]); //use the round - 1 as the index for what time to be used
+  const [time, setTime] = useState(workout[round - 1].time); //use the round - 1 as the index for what time to be used
 
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
@@ -36,11 +36,11 @@ function WorkoutTimer({ times = [] }) {
   const afterTimerDone = () => {
     //updating the index and then setting the time to the next time
     const nextRound = round + 1;
-    if (nextRound === times.length) {
+    if (nextRound === workout.length) {
       setCompleted(true);
       return;
     }
-    setTime(times[nextRound - 1]);
+    setTime(workout[nextRound - 1].time);
     setRound(nextRound);
   };
 

@@ -29,8 +29,9 @@ const timeArrayGenerator = ({ rounds, roundLength, restLength }) => {
 export function createWorkout(workoutSpecs, exercises) {
   let allRounds = [];
   for (let i = 0; i < workoutSpecs.rounds; i++) {
+    const roundNumber = i + 1;
     let round = {
-      number: i + 1,
+      number: roundNumber,
       exercises: [],
       time: timeStringToSeconds(workoutSpecs.roundLength),
       isRest: false,
@@ -43,6 +44,7 @@ export function createWorkout(workoutSpecs, exercises) {
 
     //add the rest after the round
     allRounds.push({
+      number: roundNumber,
       isRest: true,
       time: timeStringToSeconds(workoutSpecs.restLength),
     });
