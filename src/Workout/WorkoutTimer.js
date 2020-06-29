@@ -58,13 +58,27 @@ function WorkoutTimer({ workout = [] }) {
       >
         {renderTime}
       </CountdownCircleTimer>
-      {!completed ? (
-        <div>
+      <div>
+        {!completed ? (
           <h1>{round.isRest ? "Rest" : `Round ${round.number}`}</h1>
-        </div>
-      ) : (
-        <div>Well Done!</div>
-      )}
+        ) : (
+          <span>Well Done!</span>
+        )}
+      </div>
+
+      <div>
+        {!round.isRest ? (
+          <div className="exercises">
+            {" "}
+            <p>{round.exercises[0].name}</p>
+            <p>{round.exercises[1].name}</p>
+          </div>
+        ) : (
+          <span>Rest</span>
+        )}
+      </div>
+
+      <div></div>
     </div>
   );
 }
