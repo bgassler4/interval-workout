@@ -4,10 +4,15 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* .timer-wrapper {
-  display: flex;
+.timer-wrapper {
+  display: grid;
   justify-content: center;
-} */
+  grid-template-rows: 2fr 1fr 1fr;
+}
+
+.timer-exercises {
+  text-align: center;
+}
 
 .timer {
   font-family: "Montserrat";

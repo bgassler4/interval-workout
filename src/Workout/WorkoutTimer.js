@@ -74,7 +74,7 @@ function WorkoutTimer({ workout = [] }) {
             <p>{round.exercises[1].name}</p>
           </div>
         ) : (
-          <span>Rest</span>
+          <span></span>
         )}
       </div>
 
