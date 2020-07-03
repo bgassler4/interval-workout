@@ -1,3 +1,11 @@
+function ExerciseService() {}
+
+ExerciseService.prototype.showMessage = () => {
+  return { value: "hello, world" };
+};
+
+module.exports = ExerciseService;
+
 function getRandomExerciseNumber(totalExercises) {
   var exerciseIndex = Math.floor(Math.random() * totalExercises);
   return exerciseIndex;
