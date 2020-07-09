@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project allows the user to create a randomized and customized workout based on specifications that they choose. The user will choose the amount of rounds they'd like to do, the length of each round, and the length of the rest between each round.
+
+When the user is ready they can start a timer that will guide them through the workout and display the exercises that they should be performing.
+
+The project uses an React/MaterialUI front end and uses a NodeJS Express API backend.  
+
 ## Available Scripts
 
 In the project directory, you can run:
