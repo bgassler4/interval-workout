@@ -49,7 +49,7 @@ export async function createWorkout(workoutSpecs, exercises) {
       time: timeStringToSeconds(workoutSpecs.restLength),
     });
   }
-  await fetch("http://localhost:9000/exerciseAPI")
+  await fetch("http://localhost:8000/api/exercise")
     .then((res) => res.json())
     .then((res) => {
       debugger;
