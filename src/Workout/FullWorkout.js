@@ -46,10 +46,10 @@ function FullWorkout() {
     if (!exercises || exercises.length === 0) return;
     if (!workoutSpecs) return;
 
-    const workout = createWorkout(workoutSpecs, exercises);
-    dispatch(updateWorkout(workout));
-    setWorkout(workout);
-  }, [workoutSpecs, exercises]);
+    const createdWorkout = createWorkout(workoutSpecs, exercises);
+    dispatch(updateWorkout(createdWorkout));
+    setWorkout(createdWorkout);
+  }, [workoutSpecs, exercises, dispatch]);
 
   const objectNullOrEmpty = (object) => {
     return !object || Object.keys(object).length === 0;

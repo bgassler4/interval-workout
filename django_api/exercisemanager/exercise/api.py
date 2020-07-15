@@ -9,3 +9,4 @@ class ExerciseViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = ExerciseSerializer
+

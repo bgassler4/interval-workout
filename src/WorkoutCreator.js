@@ -26,7 +26,7 @@ const timeArrayGenerator = ({ rounds, roundLength, restLength }) => {
   return timeArray;
 };
 
-export async function createWorkout(workoutSpecs, exercises) {
+export function createWorkout(workoutSpecs, exercises) {
   let allRounds = [];
   for (let i = 0; i < workoutSpecs.rounds; i++) {
     const roundNumber = i + 1;
@@ -49,11 +49,5 @@ export async function createWorkout(workoutSpecs, exercises) {
       time: timeStringToSeconds(workoutSpecs.restLength),
     });
   }
-  await fetch("http://localhost:8000/api/exercise")
-    .then((res) => res.json())
-    .then((res) => {
-      debugger;
-      console.log(res);
-    });
   return allRounds;
 }
